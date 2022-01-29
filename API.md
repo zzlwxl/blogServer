@@ -24,6 +24,9 @@ POST
 | :------- | :------: | :----- | :----- |
 | username |    Y     | string | 用户名 |
 | password |    Y     | string | 密码   |
+| nickname |    N     | string | 别名   |
+| email    |    N     | string | 邮箱   |
+| user_pic |    N     | string | 头像   |
 
 ### 返回示例
 
@@ -67,10 +70,161 @@ POST
     "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ3eGwiLCJwYXNzd29yZCI6IiIsIm5pY2tuYW1lIjoiIiwiZW1haWwiOm51bGwsInVzZXJfcGljIjoiIiwiaWF0IjoxNjQzNDQyMjg4LCJleHAiOjE2NDM0NDU4ODh9.A0FNMcECAQlcKTBfQrKrKSiekI12c8zmEhqDPGUgEig"
 }
 ```
+## 获取用户信息
 
+### 请求URL
 
+```
+/my/userinfo
+```
 
+### 示例
 
+[http://127.0.0.1:3007/my/userinfo]()
 
+### 请求方式
 
+```
+GET
+```
+
+### Header
+| 参数          |  Value  |
+| :------------ | :-----: |
+| Authorization | token值 |
+
+### 参数类型: 
+
+| 参数 | 是否必选 | 类型 |
+| :--- | :------: | :--- |
+
+### 返回示例
+
+```
+{
+    "status": 0,
+    "message": "获取用户信息成功",
+    "data": {
+        "id": 3,
+        "username": "wxl",
+        "nickname": "",
+        "email": null,
+        "user_pic": null
+    }
+}
+```
+## 更新用户信息
+
+### 请求URL
+
+```
+/my/userinfo
+```
+
+### 示例
+
+[http://127.0.0.1:3007/my/userinfo]()
+
+### 请求方式
+
+```
+POST
+```
+
+### Header
+| 参数          |  Value  |
+| :------------ | :-----: |
+| Authorization | token值 |
+
+### 参数类型: 
+
+| 参数     | 是否必选 | 类型   |
+| :------- | :------: | :----- |
+| username |    Y     | string |
+| nickname |    Y     | string |
+| email    |    Y     | string |
+
+### 返回示例
+
+```
+{
+    "status": 0,
+    "message": "更新用户信息成功"
+}
+```
+## 更新用户密码
+
+### 请求URL
+
+```
+/my/updatepwd
+```
+
+### 示例
+
+[http://127.0.0.1:3007/my/updatepwd]()
+
+### 请求方式
+
+```
+POST
+```
+
+### Header
+| 参数          |  Value  |
+| :------------ | :-----: |
+| Authorization | token值 |
+
+### 参数类型: 
+
+| 参数   | 是否必选 | 类型   |
+| :----- | :------: | :----- |
+| oldPwd |    Y     | string |
+| newPwd |    Y     | string |
+
+### 返回示例
+
+```
+{
+    "status": 0,
+    "message": "更新密码成功"
+}
+```
+## 更换用户头像
+
+### 请求URL
+
+```
+/my/update/userimg
+```
+
+### 示例
+
+[http://127.0.0.1:3007/my/update/userimg]()
+
+### 请求方式
+
+```
+POST
+```
+
+### Header
+| 参数          |  Value  |
+| :------------ | :-----: |
+| Authorization | token值 |
+
+### 参数类型: 
+
+| 参数     | 是否必选 | 类型   |
+| :------- | :------: | :----- |
+| user_pic |    Y     | base64 |
+
+### 返回示例
+
+```
+{
+    "status": 0,
+    "message": "更换头像成功"
+}
+```
 

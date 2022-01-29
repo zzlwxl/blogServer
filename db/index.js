@@ -1,8 +1,10 @@
 const mysql = require('mysql')
+const {dbPwd,host} = require('../../dbPwd.js')
+
 const db = mysql.createPool({
-    host:'124.223.112.173',
+    host:host,
     user:'testDB',
-    password:'zzlzzl666...',
+    password:dbPwd,
     database:'testdb'
 })
 module.exports=db

@@ -18,8 +18,10 @@ app.use(express.urlencoded({extended:false}))
 app.use(expressJWT({secret:config.jwtSecretKey}).unless({path: [/^\/api\//]}))
 
 const userRouter = require('./router/user.js')
+const userinfoRouter = require('./router/userinfo.js')
 //注册路由模块
 app.use('/api',userRouter)
+app.use('/my',userinfoRouter)
 
 // 定义错误级别的中间件
 app.use(publicErr)
