@@ -44,7 +44,6 @@ exports.regUser = (req,res)=>{
 exports.login = (req,res)=>{
     const userinfo = req.body
 
-    //查询用户信息
     db.query(sqlLogin,userinfo.username,(err,results)=>{
         if(err) return res.cc(err)
         //获取的数据条数不等于1
