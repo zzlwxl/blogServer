@@ -7,9 +7,6 @@ const expressJoi = require('@escook/express-joi')
 const { addCate_schema ,delCate_schema,getCate_schema,updateCate_schema} = require('../schema/artcate.js')
 
 
-//获取文章分类
-router.get('/cates',artcateHandler.getArticleCates)
-
 //新增文章分类
 router.post('/addcates',expressJoi(addCate_schema), artcateHandler.addArticleCates)
 
@@ -21,5 +18,6 @@ router.get('/cates/:id',expressJoi(getCate_schema), artcateHandler.getArtCateByI
 
 //根据ID更新文章分类
 router.post('/updatecate',expressJoi(updateCate_schema), artcateHandler.updateCateById)
+
 
 module.exports = router

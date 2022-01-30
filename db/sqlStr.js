@@ -25,4 +25,14 @@ exports.sqlGetArtCates = `select * from ev_article_cate where id=?`
 //根据ID更新文章分类数据_查询分类名字是否被占用
 exports.sqlUpdateCateSelect = `select * from ev_article_cate where Id<>? and (name=? or alias=?)`
 //根据ID更新文章分类数据
-exports.sqlUpdateCate = `update ev_article_cate set ? where Id=?`
+exports.sqlUpdateCate = `update ev_article_cate set ? where id=?`
+//发布新文章
+exports.sqlAddArticle = `insert into ev_articles set ?`
+//获取所有文章列表
+exports.sqlGetArticle = `select id,title,content_view,cover_img,pub_date,state,cate_id,author_id from ev_articles`
+//用户根据ID删除文章
+exports.sqlDelArticle = `delete from ev_articles where id=? and author_id=?`
+//根据ID获取文章详情
+exports.sqlGetArticleInfo = `select id,title,content,pub_date,state,cate_id,author_id from ev_articles where id=?`
+//根据ID更新文章数据
+exports.sqlUpdateArticle = `update ev_articles set ? where id=?`

@@ -1,5 +1,4 @@
 const db = require('../db/index.js')
-const bcrypt = require('bcryptjs')
 const {sqlUpdateCate, sqlArtCates, sqlAddArtCatesSelect, sqlAddArtCates, sqlDelArtCates, sqlGetArtCates, sqlUpdateCateSelect } = require('../db/sqlStr.js')
 
 //获取文章分类
