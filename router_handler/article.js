@@ -1,14 +1,10 @@
 const db = require('../db/index.js')
-const { sqlAddArticle, sqlGetArticle, sqlDelArticle, sqlGetArticleInfo ,sqlUpdateArticle} = require('../db/sqlStr.js')
+const { sqlAddArticle, sqlGetArticle, sqlDelArticle, sqlGetArticleInfo ,sqlUpdateArticle,sqlGetArticleByUser} = require('../db/sqlStr.js')
 const path = require('path')
 const fs = require('fs')
 
 //发布新文章
 exports.addArticle = (req, res) => {
-  //   console.log(req.body) // 文本类型的数据
-  //   console.log('------------------')
-  //   console.log(req.file) // 文件类型的数据
-
   // 手动判断是否上传了文章封面
   if (!req.file || req.file.fieldname !== 'cover_img') return res.cc('文章封面是必选参数')
   const articleInfo = {
@@ -40,7 +36,7 @@ exports.addArticle = (req, res) => {
 
 //获取所有文章列表
 exports.getArticals = (req, res) => {
-  db.query(sqlGetArticle, (err, results) => {
+  db.query(sqlGetArticle,[req.query.offset ? req.query.offset : 0,req.query.limit ? req.query.limit : 10],(err, results) => {
     if (err) return res.cc(err)
     res.send({
       status: 0,
@@ -107,4 +103,16 @@ exports.updateArticle = (req, res) => {
         fs.renameSync(oldName, newName)
     }
   })
+}
+
+//获取指定用户下的文章列表
+exports.getArticelByUser=(req,res)=>{
+    db.query(sqlGetArticleByUser,[req.user.id,req.query.offset ? req.query.offset : 0,req.query.limit ? req.query.limit : 10],(err,results)=>{
+        if(err) return res.cc(err)
+        res.send({
+            status:0,
+            message:'获取文章列表成功',
+            data:results
+        })
+    })
 }

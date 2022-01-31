@@ -4,7 +4,7 @@ const articleHandler = require('../router_handler/article.js')
 // 验证表单数据的中间件
 const expressJoi = require('@escook/express-joi')
 // 需要的验证规则对象
-const { addArticle_schema ,delArticle_schema,updateArticle_schema} = require('../schema/article.js')
+const { addArticle_schema ,delArticle_schema,updateArticle_schema,getArticles_schema} = require('../schema/article.js')
 // 导入解析 formdata 格式表单数据的包
 const multer = require('multer')
 const path = require('path')
@@ -31,5 +31,8 @@ router.delete('/delarticle/:id',expressJoi(delArticle_schema), articleHandler.de
 
 //根据ID更新文章数据
 router.post('/update/articleinfo/:id',upload.single('cover_img'),expressJoi(updateArticle_schema),articleHandler.updateArticle)
+
+//获取指定用户下的所有文章列表
+router.get('/byuser/getarticles',expressJoi(getArticles_schema), articleHandler.getArticelByUser)
 
 module.exports = router
