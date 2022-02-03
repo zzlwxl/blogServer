@@ -23,7 +23,8 @@ const upload = multer({ dest: path.join(__dirname, '../uploads') })
        先使用 multer 解析表单数据
        再使用 expressJoi 对解析的表单数据进行验证
  */
-router.post('/add',upload.single('cover_img'),expressJoi(addArticle_schema), articleHandler.addArticle)
+// router.post('/add',upload.single('cover_img'),expressJoi(addArticle_schema), articleHandler.addArticle)
+router.post('/add',expressJoi(addArticle_schema), articleHandler.addArticle)
 
 //根据ID删除文章
 router.delete('/delarticle/:id',expressJoi(delArticle_schema), articleHandler.delArticle)

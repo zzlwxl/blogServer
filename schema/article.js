@@ -9,8 +9,7 @@ const title2 = joi.string()
 const cate_id2 = joi.number().integer().min(1)
 const state2 = joi.string().valid('已发布', '草稿')
 const id = joi.number().integer().min(1).required()
-const offset = joi.number().integer()
-const limit = joi.number().integer()
+
 
 //发布文章
 exports.addArticle_schema = {
@@ -48,8 +47,5 @@ exports.getArticleInfo_schema = {
 
 //获取文章列表
 exports.getArticles_schema = {
-    query:{
-        offset,
-        limit,
-    }
+
 }

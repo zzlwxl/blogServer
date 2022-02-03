@@ -1,9 +1,12 @@
 const db = require('../db/index.js')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const config =require('../config/config.js')
 const { sqlUserInfo, sqlUpdateUserInfo, sqlUpdatePwdSelect, sqlUpdatePwd ,sqlUpdateUserImg} = require('../db/sqlStr.js')
 
 //获取用户基本信息
 exports.getUserInfo = (req, res) => {
+  // console.log('userid',res.user.id)
   db.query(sqlUserInfo, [req.user.id], (err, results) => {
     if (err) return res.cc(err)
     //查询结果为空
@@ -21,7 +24,19 @@ exports.updateUserInfo = (req, res) => {
     console.log(req.body)
     if (err) return res.cc(err)
     if (results.affectedRows !== 1) return res.cc('更新用户信息失败')
-    res.cc('更新用户信息成功', 0)
+    //生成Token字符串，不包括密码和头像
+    // const user = {...results,password:'',user_pic:''}
+    // 对用户的信息进行加密，生成Token字符串
+    // const tokenStr = jwt.sign(user,config.jwtSecretKey,{expiresIn:config.expiresIn})
+    //将Token响应给客户端
+
+
+    // console.log(results.username)
+    res.send({
+        status:0,
+        message:'更新成功',
+        // token: 'Bearer '+tokenStr
+    })
   })
 }
 
@@ -41,7 +56,7 @@ exports.updatePassword = (req, res) => {
     db.query(sqlUpdatePwd,[newPwd,req.user.id],(err,results)=>{
         if(err) return res.cc(err)
         if(results.affectedRows !== 1) return res.cc('更新用户密码失败')
-        res.cc('更新密码成功',0)
+        res.cc('更新密码成功，请重新登录',0)
     })
   })
 }

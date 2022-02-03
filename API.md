@@ -457,12 +457,12 @@ x-www-form-urlencoded格式
 ### 请求URL
 
 ```
-/my/article/addcates
+/my/article/add
 ```
 
 ### 示例
 
-[http://127.0.0.1:3007/my/article/addcates]()
+[http://127.0.0.1:3007/my/article/add]()
 
 ### 请求方式
 
@@ -486,7 +486,7 @@ form-data格式
 | title     |    Y     | string | 文章标题           |
 | cate_id   |    Y     | int    | 所属分类ID         |
 | content   |    Y     | string | 文章内容           |
-| cover_img |    Y     | file   | 文章封面           |
+| cover_img |    N     | file   | 文章封面           |
 | state     |    Y     | string | 状态，已发布、草稿 |
 
 ### 返回示例
@@ -521,6 +521,62 @@ GET
 | :----- | :------: | :--- | ---------------------- |
 | offset |    N     | int  | 跳过多少条数据，默认0  |
 | limit  |    N     | int  | 请求数据的数量，默认10 |
+
+### 返回示例
+
+```
+{
+    "status": 0,
+    "message": "获取文章列表成功",
+    "data": [
+        {
+            "id": 33,
+            "title": "标题2",
+            "content_view": "携带的查询参数、动态参数、托管静态资源、模块化路由、中间件、全局生效、局部生效、中间件的分类、自定义...",
+            "cover_img": "/uploads/2e6b9bf310618edd10c053c50261bd0d.jpg",
+            "pub_date": "2022-01-30 20:49:59.766",
+            "state": "已发布",
+            "cate_id": 5,
+            "author_id": 16
+        },
+        {
+            "id": 34,
+            "title": "标题3",
+            "content_view": "t认证Express创建服务器、监听GET、POST请求、把内容响应给客户端、获取URL中携带的查询...",
+            "cover_img": "/uploads/9ebfa12d695f776466aa0fdba1680d03.jpg",
+            "pub_date": "2022-01-30 21:14:00.781",
+            "state": "已发布",
+            "cate_id": 5,
+            "author_id": 16
+        }
+    ]
+}
+```
+## 获取分类下所有文章列表
+
+### 请求URL
+
+```
+/anyone/article/getarticles/bycate
+```
+
+### 示例
+
+[http://127.0.0.1:3007/anyone/article/getarticles/bycate]()
+
+### 请求方式
+
+```
+GET
+```
+
+### 参数类型: query
+
+| 参数    | 是否必选 | 类型 | 说明                   |
+| :------ | :------: | :--- | ---------------------- |
+| cate_id |    Y     | int  | 分类ID                 |
+| offset  |    N     | int  | 跳过多少条数据，默认0  |
+| limit   |    N     | int  | 请求数据的数量，默认10 |
 
 ### 返回示例
 

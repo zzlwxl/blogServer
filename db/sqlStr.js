@@ -30,6 +30,8 @@ exports.sqlUpdateCate = `update ev_article_cate set ? where id=?`
 exports.sqlAddArticle = `insert into ev_articles set ?`
 //获取所有文章列表
 exports.sqlGetArticle = `select id,title,content_view,cover_img,pub_date,state,cate_id,author_id from ev_articles limit ?,?`
+//获取分类下所有文章列表
+exports.sqlGetArticleByCate = `select id,title,content_view,cover_img,pub_date,state,cate_id,author_id from ev_articles where cate_id=? limit ?,?`
 //获取指定用户下的所有文章列表
 exports.sqlGetArticleByUser = `select id,title,content_view,cover_img,pub_date,state,cate_id,author_id from ev_articles where author_id=? limit ?,?`
 //用户根据ID删除文章
