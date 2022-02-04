@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const articleHandler = require('../router_handler/article.js')
+const UserInfoHandler = require('../router_handler/userinfo.js')
 // 验证表单数据的中间件
 const expressJoi = require('@escook/express-joi')
 // 需要的验证规则对象
@@ -15,5 +16,7 @@ router.get('/getarticles/bycate', articleHandler.getArticalsByCate)
 //根据ID获取文章详情
 router.get('/getarticle/info/:id',expressJoi(getArticleInfo_schema), articleHandler.getArticalInfo)
 
+//根据ID获取用户基本信息
+router.get('/userinfo/:id',UserInfoHandler.getUserInfoById)
 
 module.exports = router

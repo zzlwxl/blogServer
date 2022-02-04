@@ -18,6 +18,20 @@ exports.getUserInfo = (req, res) => {
     })
   })
 }
+//根据ID获取用户基本信息
+exports.getUserInfoById = (req, res) => {
+  // console.log('userid',res.user.id)
+  db.query(sqlUserInfo, req.params.id, (err, results) => {
+    if (err) return res.cc(err)
+    //查询结果为空
+    if (results.length !== 1) return res.cc('获取用户信息失败')
+    res.send({
+      status: 0,
+      message: '获取用户信息成功',
+      data: results[0],
+    })
+  })
+}
 //更新用户信息
 exports.updateUserInfo = (req, res) => {
   db.query(sqlUpdateUserInfo, [req.body, req.user.id], (err, results) => {

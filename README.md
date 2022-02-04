@@ -6,6 +6,6 @@
 
 ## API
 
-项目里已经包含sql文件--->testdb.sql
+项目里已经包含sql文件--->https://gitee.com/wxlzzl/blog-serve/blob/master/testdb.sql
 
-接口文档-------> API.md
+接口文档-------> https://gitee.com/wxlzzl/blog-serve/blob/master/API.md

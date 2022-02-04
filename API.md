@@ -121,6 +121,44 @@ GET
     }
 }
 ```
+## 根据ID获取用户信息
+
+### 请求URL
+
+```
+/anyone/article/userinfo/:id
+```
+
+### 示例
+
+[http://127.0.0.1:3007/anyone/article/userinfo/2]()
+
+### 请求方式
+
+```
+GET
+```
+### 参数类型: Params
+
+| 参数 | 是否必选 | 类型 | 说明   |
+| :--- | :------: | :--- | ------ |
+| id   |    Y     | int  | 作者ID |
+
+### 返回示例
+
+```
+{
+    "status": 0,
+    "message": "获取用户信息成功",
+    "data": {
+        "id": 2,
+        "username": "wxl",
+        "nickname": "",
+        "email": null,
+        "user_pic": null
+    }
+}
+```
 ## 更新用户信息
 
 ### 请求URL
